@@ -4,8 +4,6 @@ services:
     build:
       context: ./client
       target: production
-    volumes:
-        - './client:/app'
     restart: always
     networks:
         - frontend
