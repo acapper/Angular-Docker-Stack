@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  client:
+    build:
+      context: ./client
+      target: development
+    command: [sh, -c, "npm run start"]
+    volumes:
+        - './client:/app'
+    restart: always
+    networks:
+        - frontend
+  proxy:
+    build:
+      context: ./proxy
+    restart: always
+    ports:
+        - '80:80'
+        - '443:443'
+    networks:
+        - frontend
+networks:
+  frontend:
