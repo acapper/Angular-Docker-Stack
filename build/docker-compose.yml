@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  client:
+    image: prod_client
+    restart: always
+    networks:
+        - frontend
+  proxy:
+    image: prod_proxy
+    restart: always
+    ports:
+        - '80:80'
+        - '443:443'
+    networks:
+        - frontend
+networks:
+  frontend:
